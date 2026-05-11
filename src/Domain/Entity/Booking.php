@@ -3,7 +3,7 @@
 namespace App\Domain\Entity;
 
 use App\Domain\ValueObject\BookingDate;
-use Exception;
+use App\Domain\ValueObject\BookingId;
 use InvalidArgumentException;
 
 final class Booking
@@ -15,7 +15,7 @@ final class Booking
     private string $status;
 
     public function __construct(
-        private string $id,
+        private BookingId $id,
         private string $customerName,
         private BookingDate $dates
     )
