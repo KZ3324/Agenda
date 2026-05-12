@@ -4,6 +4,7 @@ namespace App\Infrastructure\Persistence\InMemory;
 
 use App\Domain\Entity\Booking;
 use App\Domain\Repository\BookingRepositoryInterface;
+use App\Domain\ValueObject\BookingId;
 
 class InMemoryBookingRepository implements BookingRepositoryInterface
 {
@@ -12,7 +13,7 @@ class InMemoryBookingRepository implements BookingRepositoryInterface
     {
         $this->bookings[$booking->getId()] = $booking;
     }
-    public function findById(string $id): ?Booking
+    public function findById(BookingId $id): ?Booking
     {
         return $this->bookings[$id] ?? null;
     }
