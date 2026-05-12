@@ -8,14 +8,19 @@ use App\Domain\ValueObject\BookingDate;
 use App\Domain\ValueObject\BookingId;
 use DateTime;
 
-final class CreateBookingUseCase
+final class CreateBooking
 {
     public function __construct(private BookingRepositoryInterface $booking_repository) {}
 
-    public function execute(string $customerName, string $start, string $end) : Booking
+    public function execute(string $customerName, DateTime $start, DateTime $end) : Booking
     {
-        $dates = new BookingDate(new DateTime($start), new DateTime($end));
-        $booking = new Booking(BookingId::generate(), $customerName, $dates);
+        $booking = new Booking(
+            BookingId::generate(),
+            $customerName,
+            new BookingDate($start, $end)
+        );
+
+
         $this->booking_repository->save($booking);
         return $booking;
     }

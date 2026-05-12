@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    
+    <embeddable name="App\Domain\ValueObject\BookingDate">
+        <field name="startDate" type="datetime" column="start_date" />
+        <field name="endDate" type="datetime" column="end_date" />
+    </embeddable>
+
+</doctrine-mapping>
